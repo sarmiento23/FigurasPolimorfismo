@@ -1,0 +1,1 @@
+figurasherencia.Cuadrado
