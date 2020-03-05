@@ -61,21 +61,21 @@ public class Ventana extends javax.swing.JFrame {
      */
     private double coordenada4X, coordenada4Y;
     /**
-     * 
+     *
      */
     IOperaciones operacion;
     /**
-     * Indica el tamaño que va a tener el vector que se llena con
-     * objetos de la clase FigurasGeometricas
+     * Indica el tamaño que va a tener el vector que se llena con objetos de la
+     * clase FigurasGeometricas
      */
-    byte tamanoVectorFiguras=2;
+    byte tamanoVectorFiguras = 2;
     /**
      * Se instancia un vetor de la clase FigurasGeometricas
      */
     FigurasGeometricas[] vectorDeFiguras = new FigurasGeometricas[tamanoVectorFiguras];
     /**
-     * variable que hace la funcion de un contador 
-     * para saber cuantas figuras a agregado
+     * variable que hace la funcion de un contador para saber cuantas figuras a
+     * agregado
      */
     byte numeroFiguraAgregadas;
 
@@ -191,28 +191,29 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Metodo que verifica las coordendas de cada una de las figuras
      *
-     * @return poderGraficar retorna un true si se puede dibujar la figura
+     * @param operacion
+     * @return
      */
-    private boolean recibirVerificacion() {
+    private boolean recibirVerificacion(IOperaciones operacion) {
         boolean poderGraficar = false;
-        seperarCoordenadas();
+        //   seperarCoordenadas();
         switch (figura) {
             case "Cuadrado":
-                operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                // operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
                 poderGraficar = ((Cuadrado) operacion).verificarCuadrilatero("Cuadrado");
                 if (poderGraficar == true) {
                     poderGraficar = ((Cuadrado) operacion).verificarCoordenadas();
                 }
                 break;
             case "Rectangulo":
-                operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                //  operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
                 poderGraficar = ((Rectangulo) operacion).verificarCuadrilatero("Rectangulo");
                 if (poderGraficar == true) {
                     poderGraficar = ((Rectangulo) operacion).verificarCoordenadas();
                 }
                 break;
             case "Triangulo":
-                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                // operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
                 poderGraficar = ((Triangulo) operacion).verificarCoordenadas();
                 break;
             default:
@@ -226,56 +227,55 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Metodo para graficar cada una de las figuras segun correspndan
      */
-    private void graficar() {
-        boolean poderGraficar = recibirVerificacion();
-        String resultados;
-
-        switch (figura) {
-            case "Cuadrado":
-                if (poderGraficar == true) {
-                    operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                    ((Cuadrado) operacion).setColor(color);
-                    pintarFigura(((Cuadrado) operacion).arrayPuntosEnX(), ((Cuadrado) operacion).arrayPuntosEnY(), ((Cuadrado) operacion).getColor());
-                    ((Cuadrado) operacion).hallarArea();
-                    ((Cuadrado) operacion).hallarPerimetro();
-                    resultados = ((Cuadrado) operacion).resultadoOperaciones();
-                    taResultados.setText(resultados);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "Rectangulo":
-                if (poderGraficar == true) {
-                    operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                    ((Rectangulo) operacion).setColor(color);
-                    pintarFigura(((Rectangulo) operacion).arrayPuntosEnX(), ((Rectangulo) operacion).arrayPuntosEnY(), ((Rectangulo) operacion).getColor());
-                    ((Rectangulo) operacion).hallarArea();
-                    ((Rectangulo) operacion).hallarPerimetro();
-                    resultados = ((Rectangulo) operacion).resultadoOperaciones();
-                    taResultados.setText(resultados);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "Triangulo":
-                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-                if (poderGraficar == true) {
-                    operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-                    ((Triangulo) operacion).setColor(color);
-                    pintarFigura(((Triangulo) operacion).arrayPuntosEnX(), ((Triangulo) operacion).arrayPuntosEnY(), ((Triangulo) operacion).getColor());
-                    ((Triangulo) operacion).hallarPerimetro();
-                    ((Triangulo) operacion).hallarArea();
-                    resultados = ((Triangulo) operacion).resultadoOperaciones();
-                    taResultados.setText(resultados);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
+//    private void graficar() {
+//        boolean poderGraficar = recibirVerificacion();
+//        String resultados;
+//
+//        switch (figura) {
+//            case "Cuadrado":
+//                if (poderGraficar == true) {
+//                    operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+//                    ((Cuadrado) operacion).setColor(color);
+//                    pintarFigura(((Cuadrado) operacion).arrayPuntosEnX(), ((Cuadrado) operacion).arrayPuntosEnY(), ((Cuadrado) operacion).getColor());
+//                    ((Cuadrado) operacion).hallarArea();
+//                    ((Cuadrado) operacion).hallarPerimetro();
+//                    resultados = ((Cuadrado) operacion).resultadoOperaciones();
+//                    taResultados.setText(resultados);
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+//                }
+//                break;
+//            case "Rectangulo":
+//                if (poderGraficar == true) {
+//                    operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+//                    ((Rectangulo) operacion).setColor(color);
+//                    pintarFigura(((Rectangulo) operacion).arrayPuntosEnX(), ((Rectangulo) operacion).arrayPuntosEnY(), ((Rectangulo) operacion).getColor());
+//                    ((Rectangulo) operacion).hallarArea();
+//                    ((Rectangulo) operacion).hallarPerimetro();
+//                    resultados = ((Rectangulo) operacion).resultadoOperaciones();
+//                    taResultados.setText(resultados);
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+//                }
+//                break;
+//            case "Triangulo":
+//                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+//                if (poderGraficar == true) {
+//                    operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+//                    ((Triangulo) operacion).setColor(color);
+//                    pintarFigura(((Triangulo) operacion).arrayPuntosEnX(), ((Triangulo) operacion).arrayPuntosEnY(), ((Triangulo) operacion).getColor());
+//                    ((Triangulo) operacion).hallarPerimetro();
+//                    ((Triangulo) operacion).hallarArea();
+//                    resultados = ((Triangulo) operacion).resultadoOperaciones();
+//                    taResultados.setText(resultados);
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+//                }
+//                break;
+//            default:
+//                break;
+//        }
+//    }
     /**
      * Metodo que pinta la figura en el plano cartesiano
      *
@@ -568,7 +568,7 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada4.setVisible(true);
                 taResultados.setVisible(true);
                 taResultados.setEditable(false);
-                btGraficar.setVisible(true);
+                btGraficar.setVisible(false);
                 panelInformacionFiguras.setVisible(true);
                 break;
             case "Rectangulo":
@@ -583,7 +583,7 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada4.setVisible(true);
                 taResultados.setVisible(true);
                 taResultados.setEditable(false);
-                btGraficar.setVisible(true);
+                btGraficar.setVisible(false);
                 panelInformacionFiguras.setVisible(true);
                 break;
             case "Triangulo":
@@ -616,7 +616,7 @@ public class Ventana extends javax.swing.JFrame {
         //obtenerDatos();
         // seperarCoordenadas();
         // recibirVerificacion();
-        graficar();
+        //graficar();
 
     }//GEN-LAST:event_btGraficarActionPerformed
 
@@ -639,44 +639,65 @@ public class Ventana extends javax.swing.JFrame {
         for (int i = 79; i < 500; i += 10) {
             ventana.drawLine(445, i, 455, i);
         }
+        
+        numeroFiguraAgregadas = 0;
     }//GEN-LAST:event_btLimpiarActionPerformed
 
     /**
-     * Metodo que llena el vector segun la 
-     * cantidad de clic que se hagan por el evento
-     * @param evt 
+     * Metodo que llena el vector segun la cantidad de clic que se hagan por el
+     * evento
+     *
+     * @param evt
      */
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+        boolean verificacion;
         String figura2 = cbSeleccionFigura.getSelectedItem().toString();
         seperarCoordenadas();
         if (numeroFiguraAgregadas < tamanoVectorFiguras) {
             switch (figura2) {
-            case "Seleccione una Figura":
-                JOptionPane.showMessageDialog(this, "Por favor seleccione una figura", "Error!", JOptionPane.WARNING_MESSAGE);
-                break;
-            case "Cuadrado":
-                operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                ((Cuadrado) operacion).setColor(color);
-                vectorDeFiguras[numeroFiguraAgregadas] = ((Cuadrado) operacion);
-                numeroFiguraAgregadas++;
-                break;
-            case "Rectangulo":
-                operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                ((Rectangulo) operacion).setColor(color);
-                vectorDeFiguras[numeroFiguraAgregadas] = ((Rectangulo) operacion);    
-                numeroFiguraAgregadas++;
-                break;
-            case "Triangulo":
-                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-                ((Triangulo) operacion).setColor(color);
-                vectorDeFiguras[numeroFiguraAgregadas] = ((Triangulo) operacion); 
-                numeroFiguraAgregadas++;
-                break;
-            default:
-                break;
-        }
+                case "Seleccione una Figura":
+                    JOptionPane.showMessageDialog(this, "Por favor seleccione una figura", "Error!", JOptionPane.WARNING_MESSAGE);
+                    break;
+                case "Cuadrado":
+                    operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    verificacion = recibirVerificacion(operacion);
+                    if (verificacion == true) {
+                        ((Cuadrado) operacion).setColor(color);
+                        vectorDeFiguras[numeroFiguraAgregadas] = ((Cuadrado) operacion);
+                        numeroFiguraAgregadas++;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                case "Rectangulo":
+                    operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    verificacion = recibirVerificacion(operacion);
+                    if (verificacion == true) {
+                        ((Rectangulo) operacion).setColor(color);
+                        vectorDeFiguras[numeroFiguraAgregadas] = ((Rectangulo) operacion);
+                        numeroFiguraAgregadas++;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                case "Triangulo":
+                    operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                    verificacion = recibirVerificacion(operacion);
+                    if (verificacion == true) {
+                        ((Triangulo) operacion).setColor(color);
+                        vectorDeFiguras[numeroFiguraAgregadas] = ((Triangulo) operacion);
+                        numeroFiguraAgregadas++;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                default:
+                    break;
+            }
         } else {
             JOptionPane.showMessageDialog(this, "No puede agregar mas figuras", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            btGraficar.setVisible(true);
+            btLimpiar.setVisible(true);
         }
     }//GEN-LAST:event_btAgregarActionPerformed
 
