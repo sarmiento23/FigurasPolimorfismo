@@ -163,7 +163,8 @@ public class Cuadrilatero extends FigurasGeometricas {
 
    @Override
      public void hallarArea() {
-       setArea(getLado1() * getLado1());
+       double resultadoArea =getLado1() * getLado1();
+       setArea(resultadoArea);
     }
 
     /**
@@ -177,6 +178,7 @@ public class Cuadrilatero extends FigurasGeometricas {
       /**
      * Metodo para hallar la distancia de cada uno de los lados
      */
+    
     
     
 

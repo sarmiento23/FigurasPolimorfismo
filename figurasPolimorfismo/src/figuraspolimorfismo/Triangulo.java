@@ -113,13 +113,14 @@ public class Triangulo extends FigurasGeometricas {
     /**
      * Metodo que muestra los resultados del area, perimetro y el tipo del triangulo
      * @return  resultado retorna el resultado del area,perimetro y tipo del triangulo
-     */
+     
+    
     @Override
     public String resultadoOperaciones(){
         String resultado = "El area es: " + getArea() + "\n"+"El perimetro es: " + getPerimetro() +"\n"+"El tipo de triangulo es: "+tipoTriangulo;
         
         return resultado;
-    }
+    }*/
 
     
     /**

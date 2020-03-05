@@ -227,55 +227,43 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Metodo para graficar cada una de las figuras segun correspndan
      */
-//    private void graficar() {
-//        boolean poderGraficar = recibirVerificacion();
-//        String resultados;
-//
-//        switch (figura) {
-//            case "Cuadrado":
-//                if (poderGraficar == true) {
-//                    operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-//                    ((Cuadrado) operacion).setColor(color);
-//                    pintarFigura(((Cuadrado) operacion).arrayPuntosEnX(), ((Cuadrado) operacion).arrayPuntosEnY(), ((Cuadrado) operacion).getColor());
-//                    ((Cuadrado) operacion).hallarArea();
-//                    ((Cuadrado) operacion).hallarPerimetro();
-//                    resultados = ((Cuadrado) operacion).resultadoOperaciones();
-//                    taResultados.setText(resultados);
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-//                }
-//                break;
-//            case "Rectangulo":
-//                if (poderGraficar == true) {
-//                    operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-//                    ((Rectangulo) operacion).setColor(color);
-//                    pintarFigura(((Rectangulo) operacion).arrayPuntosEnX(), ((Rectangulo) operacion).arrayPuntosEnY(), ((Rectangulo) operacion).getColor());
-//                    ((Rectangulo) operacion).hallarArea();
-//                    ((Rectangulo) operacion).hallarPerimetro();
-//                    resultados = ((Rectangulo) operacion).resultadoOperaciones();
-//                    taResultados.setText(resultados);
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-//                }
-//                break;
-//            case "Triangulo":
-//                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-//                if (poderGraficar == true) {
-//                    operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-//                    ((Triangulo) operacion).setColor(color);
-//                    pintarFigura(((Triangulo) operacion).arrayPuntosEnX(), ((Triangulo) operacion).arrayPuntosEnY(), ((Triangulo) operacion).getColor());
-//                    ((Triangulo) operacion).hallarPerimetro();
-//                    ((Triangulo) operacion).hallarArea();
-//                    resultados = ((Triangulo) operacion).resultadoOperaciones();
-//                    taResultados.setText(resultados);
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
-//                }
-//                break;
-//            default:
-//                break;
-//        }
-//    }
+    private void graficar() {
+        String resultados = "";
+        double area;
+        double perimetro;
+        String resultadoMetodo;
+        
+        /*
+            Retorna solo los datos de la segunda figura
+            resultadoMetodo = ((FigurasGeometricas) operacion).resultadoOperaciones();
+            resultados = resultados + "\nFigura "+(++numeroFigura)+": "+resultadoMetodo;
+        */
+                
+        for (byte i = 0; i < vectorDeFiguras.length; i++) {
+            byte numeroFigura = i; 
+            if (vectorDeFiguras[i] instanceof Cuadrado) {
+                pintarFigura(((Cuadrado) vectorDeFiguras[i]).arrayPuntosEnX(), ((Cuadrado) vectorDeFiguras[i]).arrayPuntosEnY(), ((Cuadrado) vectorDeFiguras[i]).getColor(),"Cuadrado");
+                ((Cuadrilatero) vectorDeFiguras[i]).hallarArea();
+                ((Cuadrilatero) vectorDeFiguras[i]).hallarPerimetro();
+                resultados = resultados + "\nFigura "+(++numeroFigura)+" CUADRADO"+": "+"\nEl area es: " + ((Cuadrado) vectorDeFiguras[i]).getArea() + "\n" + "El perimetro es: " + ((Cuadrado) vectorDeFiguras[i]).getPerimetro();
+            } else if (vectorDeFiguras[i] instanceof Rectangulo) {
+                pintarFigura(((Rectangulo) vectorDeFiguras[i]).arrayPuntosEnX(), ((Rectangulo) vectorDeFiguras[i]).arrayPuntosEnY(), ((Rectangulo) vectorDeFiguras[i]).getColor(),"Rectangulo");
+                ((Rectangulo) vectorDeFiguras[i]).hallarArea();
+                ((Rectangulo) vectorDeFiguras[i]).hallarPerimetro();
+                resultados = resultados + "\nFigura "+(++numeroFigura)+" RECTANGULO"+": "+"\nEl area es: " + ((Rectangulo) vectorDeFiguras[i]).getArea() + "\n" + "El perimetro es: " + ((Rectangulo) vectorDeFiguras[i]).getPerimetro();
+            } else if (vectorDeFiguras[i] instanceof Triangulo) {
+                pintarFigura(((Triangulo) vectorDeFiguras[i]).arrayPuntosEnX(), ((Triangulo) vectorDeFiguras[i]).arrayPuntosEnY(), ((Triangulo) vectorDeFiguras[i]).getColor(),"Triangulo");
+                ((Triangulo) vectorDeFiguras[i]).hallarPerimetro();
+                ((Triangulo) vectorDeFiguras[i]).hallarArea();
+                resultados = resultados + "\nFigura "+(++numeroFigura)+" TRIANGULO"+": "+"\nEl area es: " + ((Triangulo) vectorDeFiguras[i]).getArea() + "\n" + "El perimetro es: " + ((Triangulo) vectorDeFiguras[i]).getPerimetro()+"\nTipo de triangulo :"+((Triangulo) vectorDeFiguras[i]).getTipoTriangulo();
+            }
+            
+            resultados = resultados +"\n \n";
+        }
+        
+        taResultados.setText(resultados);
+    }
+
     /**
      * Metodo que pinta la figura en el plano cartesiano
      *
@@ -283,7 +271,7 @@ public class Ventana extends javax.swing.JFrame {
      * @param arrayPuntosEnY array de los puntos en Y
      * @param ColorFigura color que se ha seleccionado
      */
-    private void pintarFigura(int[] arrayPuntosEnX, int[] arrayPuntosEnY, String ColorFigura) {
+    private void pintarFigura(int[] arrayPuntosEnX, int[] arrayPuntosEnY, String ColorFigura , String figura ) {
         Graphics ventana = getGraphics();
 
         System.out.print(ColorFigura);
@@ -301,15 +289,15 @@ public class Ventana extends javax.swing.JFrame {
             case "Cuadrado":
                 // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
                 //fillPolygon Rellena la figura y drawPolygon solo dibuja el contorno
-                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
                 break;
             case "Rectangulo":
                 // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
-                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
                 break;
             case "Triangulo":
                 // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 3);
-                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 3);
+                ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 3);
 
                 break;
             default:
@@ -598,7 +586,7 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada4.setVisible(false);
                 taResultados.setVisible(true);
                 taResultados.setEditable(false);
-                btGraficar.setVisible(true);
+                btGraficar.setVisible(false);
                 panelInformacionFiguras.setVisible(true);
                 break;
             default:
@@ -616,7 +604,7 @@ public class Ventana extends javax.swing.JFrame {
         //obtenerDatos();
         // seperarCoordenadas();
         // recibirVerificacion();
-        //graficar();
+        graficar();
 
     }//GEN-LAST:event_btGraficarActionPerformed
 
@@ -639,8 +627,29 @@ public class Ventana extends javax.swing.JFrame {
         for (int i = 79; i < 500; i += 10) {
             ventana.drawLine(445, i, 455, i);
         }
-        
+
         numeroFiguraAgregadas = 0;
+        for (int i = 0; i < vectorDeFiguras.length; i++) {
+            vectorDeFiguras[i] = null;
+        }
+        
+        lbCoordenadas.setVisible(false);
+        lbNumero1.setVisible(false);
+        lbNumero2.setVisible(false);
+        lbNumero3.setVisible(false);
+        lbNumero4.setVisible(false);
+        tfCoordenada1.setVisible(false);
+        tfCoordenada2.setVisible(false);
+        tfCoordenada3.setVisible(false);
+        tfCoordenada4.setVisible(false);
+        taResultados.setVisible(false);
+        tfCoordenada1.setText(null);
+        tfCoordenada2.setText(null);
+        tfCoordenada3.setText(null);
+        tfCoordenada4.setText(null);
+        panelInformacionFiguras.setVisible(false);
+        btGraficar.setVisible(false);
+        btLimpiar.setVisible(false);
     }//GEN-LAST:event_btLimpiarActionPerformed
 
     /**
@@ -653,6 +662,11 @@ public class Ventana extends javax.swing.JFrame {
         boolean verificacion;
         String figura2 = cbSeleccionFigura.getSelectedItem().toString();
         seperarCoordenadas();
+        if (numeroFiguraAgregadas == 1) {
+           btGraficar.setVisible(true);
+           btLimpiar.setVisible(true);  
+        }
+        
         if (numeroFiguraAgregadas < tamanoVectorFiguras) {
             switch (figura2) {
                 case "Seleccione una Figura":
@@ -665,6 +679,7 @@ public class Ventana extends javax.swing.JFrame {
                         ((Cuadrado) operacion).setColor(color);
                         vectorDeFiguras[numeroFiguraAgregadas] = ((Cuadrado) operacion);
                         numeroFiguraAgregadas++;
+                        JOptionPane.showMessageDialog(this, "Se agrego figura correctamente", "Agregada", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
                     }
@@ -676,6 +691,7 @@ public class Ventana extends javax.swing.JFrame {
                         ((Rectangulo) operacion).setColor(color);
                         vectorDeFiguras[numeroFiguraAgregadas] = ((Rectangulo) operacion);
                         numeroFiguraAgregadas++;
+                        JOptionPane.showMessageDialog(this, "Se agrego figura correctamente", "Agregada", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
                     }
@@ -687,6 +703,7 @@ public class Ventana extends javax.swing.JFrame {
                         ((Triangulo) operacion).setColor(color);
                         vectorDeFiguras[numeroFiguraAgregadas] = ((Triangulo) operacion);
                         numeroFiguraAgregadas++;
+                        JOptionPane.showMessageDialog(this, "Se agrego figura correctamente", "Agregada", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Las coordenadas son incorrectas", "Error!", JOptionPane.ERROR_MESSAGE);
                     }
@@ -696,8 +713,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "No puede agregar mas figuras", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            btGraficar.setVisible(true);
-            btLimpiar.setVisible(true);
         }
     }//GEN-LAST:event_btAgregarActionPerformed
 
