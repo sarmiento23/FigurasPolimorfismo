@@ -36,6 +36,9 @@ public class Cuadrilatero extends FigurasGeometricas {
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
         this.coordenada4X = coordenada4X;
         this.coordenada4Y = coordenada4Y;
+        
+        setLado1(hallarLado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y));
+        setLado2(hallarLado(coordenada3X,coordenada3Y,coordenada2X,coordenada2Y));
     }
      /**
       * Metodo para verificar si la figura es un cuadrado ó un rectangulo

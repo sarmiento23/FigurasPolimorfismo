@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
  * @author Luz
  */
 public class Ventana extends javax.swing.JFrame {
+
     /**
-     * la  variable figura  almacena el tipo de figura seleccionado en el menu desplegable
+     * la variable figura almacena el tipo de figura seleccionado en el menu
+     * desplegable
      */
     private String figura;
     /**
@@ -35,27 +37,47 @@ public class Ventana extends javax.swing.JFrame {
      */
     private String coordenada3;
     /**
-     * la variable coordenada4  almacena el valor de la cuarta cordenda
+     * la variable coordenada4 almacena el valor de la cuarta cordenda
      */
     private String coordenada4;
     /**
-     * las variables coordenada1X y coordenada1Y  almacenan los valores de  X y Y de la primera coordenada 
+     * las variables coordenada1X y coordenada1Y almacenan los valores de X y Y
+     * de la primera coordenada
      */
     private double coordenada1X, coordenada1Y;
     /**
-     * las variables coordenada2X y coordenada2Y  almacenan los valores de  X y Y de la segunda coordenada 
+     * las variables coordenada2X y coordenada2Y almacenan los valores de X y Y
+     * de la segunda coordenada
      */
     private double coordenada2X, coordenada2Y;
     /**
-    * las variables coordenada3X y coordenada3Y  almacenan los valores de  X y Y de la tercera coordenada 
-    */
+     * las variables coordenada3X y coordenada3Y almacenan los valores de X y Y
+     * de la tercera coordenada
+     */
     private double coordenada3X, coordenada3Y;
     /**
-     * las variables coordenada4X y coordenada4Y  almacenan los valores de  X y Y de la cuarta coordenada 
+     * las variables coordenada4X y coordenada4Y almacenan los valores de X y Y
+     * de la cuarta coordenada
      */
     private double coordenada4X, coordenada4Y;
-    
+    /**
+     * 
+     */
     IOperaciones operacion;
+    /**
+     * Indica el tamaño que va a tener el vector que se llena con
+     * objetos de la clase FigurasGeometricas
+     */
+    byte tamanoVectorFiguras=2;
+    /**
+     * Se instancia un vetor de la clase FigurasGeometricas
+     */
+    FigurasGeometricas[] vectorDeFiguras = new FigurasGeometricas[tamanoVectorFiguras];
+    /**
+     * variable que hace la funcion de un contador 
+     * para saber cuantas figuras a agregado
+     */
+    byte numeroFiguraAgregadas;
 
     /**
      * Metodo que crea la ventana del formulario
@@ -72,7 +94,8 @@ public class Ventana extends javax.swing.JFrame {
      a los textFile
      */
     /**
-     * Metodo para inicializar el plano cartesiano 
+     * Metodo para inicializar el plano cartesiano
+     *
      * @param ventana dimensiones del plano cartesiano
      */
     @Override
@@ -107,7 +130,9 @@ public class Ventana extends javax.swing.JFrame {
         taResultados.setVisible(false);
         panelInformacionFiguras.setVisible(false);
         btGraficar.setVisible(false);
+        btLimpiar.setVisible(false);
     }
+
     /**
      * Metodo que obtiene los datos ingresados en la interfaz
      */
@@ -121,8 +146,10 @@ public class Ventana extends javax.swing.JFrame {
         coordenada4 = tfCoordenada4.getText();
 
     }
+
     /**
-     * Metodo que obtiene las coordendas en la forma X,Y y los separa crear variables independientes X y Y
+     * Metodo que obtiene las coordendas en la forma X,Y y los separa crear
+     * variables independientes X y Y
      */
     private void seperarCoordenadas() {
         String puntoX, puntoY;
@@ -160,8 +187,10 @@ public class Ventana extends javax.swing.JFrame {
         this.coordenada4Y = Double.parseDouble(puntoY);
 
     }
+
     /**
      * Metodo que verifica las coordendas de cada una de las figuras
+     *
      * @return poderGraficar retorna un true si se puede dibujar la figura
      */
     private boolean recibirVerificacion() {
@@ -170,21 +199,21 @@ public class Ventana extends javax.swing.JFrame {
         switch (figura) {
             case "Cuadrado":
                 operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                poderGraficar = ((Cuadrado)operacion).verificarCuadrilatero("Cuadrado");
+                poderGraficar = ((Cuadrado) operacion).verificarCuadrilatero("Cuadrado");
                 if (poderGraficar == true) {
-                    poderGraficar = ((Cuadrado)operacion).verificarCoordenadas();
+                    poderGraficar = ((Cuadrado) operacion).verificarCoordenadas();
                 }
                 break;
             case "Rectangulo":
-                operacion= new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                poderGraficar = ((Rectangulo)operacion).verificarCuadrilatero("Rectangulo");
+                operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                poderGraficar = ((Rectangulo) operacion).verificarCuadrilatero("Rectangulo");
                 if (poderGraficar == true) {
-                    poderGraficar = ((Rectangulo)operacion).verificarCoordenadas();
+                    poderGraficar = ((Rectangulo) operacion).verificarCoordenadas();
                 }
                 break;
             case "Triangulo":
                 operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-                poderGraficar = ((Triangulo)operacion).verificarCoordenadas();
+                poderGraficar = ((Triangulo) operacion).verificarCoordenadas();
                 break;
             default:
                 break;
@@ -193,6 +222,7 @@ public class Ventana extends javax.swing.JFrame {
         //System.out.print(poderGraficar);
         return poderGraficar;
     }
+
     /**
      * Metodo para graficar cada una de las figuras segun correspndan
      */
@@ -204,11 +234,11 @@ public class Ventana extends javax.swing.JFrame {
             case "Cuadrado":
                 if (poderGraficar == true) {
                     operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                    ((Cuadrado)operacion).setColor(color);
-                    pintarFigura(((Cuadrado)operacion).arrayPuntosEnX(), ((Cuadrado)operacion).arrayPuntosEnY(), ((Cuadrado)operacion).getColor());
-                    ((Cuadrado)operacion).hallarArea();
-                    ((Cuadrado)operacion).hallarPerimetro();
-                    resultados = ((Cuadrado)operacion).resultadoOperaciones();
+                    ((Cuadrado) operacion).setColor(color);
+                    pintarFigura(((Cuadrado) operacion).arrayPuntosEnX(), ((Cuadrado) operacion).arrayPuntosEnY(), ((Cuadrado) operacion).getColor());
+                    ((Cuadrado) operacion).hallarArea();
+                    ((Cuadrado) operacion).hallarPerimetro();
+                    resultados = ((Cuadrado) operacion).resultadoOperaciones();
                     taResultados.setText(resultados);
                 } else {
                     JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -216,12 +246,12 @@ public class Ventana extends javax.swing.JFrame {
                 break;
             case "Rectangulo":
                 if (poderGraficar == true) {
-                    operacion= new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
-                    ((Rectangulo)operacion).setColor(color);
-                    pintarFigura(((Rectangulo)operacion).arrayPuntosEnX(), ((Rectangulo)operacion).arrayPuntosEnY(), ((Rectangulo)operacion).getColor());
-                    ((Rectangulo)operacion).hallarArea();
-                    ((Rectangulo)operacion).hallarPerimetro();
-                    resultados = ((Rectangulo)operacion).resultadoOperaciones();
+                    operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    ((Rectangulo) operacion).setColor(color);
+                    pintarFigura(((Rectangulo) operacion).arrayPuntosEnX(), ((Rectangulo) operacion).arrayPuntosEnY(), ((Rectangulo) operacion).getColor());
+                    ((Rectangulo) operacion).hallarArea();
+                    ((Rectangulo) operacion).hallarPerimetro();
+                    resultados = ((Rectangulo) operacion).resultadoOperaciones();
                     taResultados.setText(resultados);
                 } else {
                     JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -230,12 +260,12 @@ public class Ventana extends javax.swing.JFrame {
             case "Triangulo":
                 operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
                 if (poderGraficar == true) {
-                    operacion= new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
-                    ((Triangulo)operacion).setColor(color);
-                    pintarFigura(((Triangulo)operacion).arrayPuntosEnX(), ((Triangulo)operacion).arrayPuntosEnY(), ((Triangulo)operacion).getColor());
-                    ((Triangulo)operacion).hallarPerimetro();
-                    ((Triangulo)operacion).hallarArea();
-                    resultados = ((Triangulo)operacion).resultadoOperaciones();
+                    operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                    ((Triangulo) operacion).setColor(color);
+                    pintarFigura(((Triangulo) operacion).arrayPuntosEnX(), ((Triangulo) operacion).arrayPuntosEnY(), ((Triangulo) operacion).getColor());
+                    ((Triangulo) operacion).hallarPerimetro();
+                    ((Triangulo) operacion).hallarArea();
+                    resultados = ((Triangulo) operacion).resultadoOperaciones();
                     taResultados.setText(resultados);
                 } else {
                     JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -245,11 +275,13 @@ public class Ventana extends javax.swing.JFrame {
                 break;
         }
     }
+
     /**
-     * Metodo que pinta la figura en el plano cartesiano 
+     * Metodo que pinta la figura en el plano cartesiano
+     *
      * @param arrayPuntosEnX array de los puntos en X
      * @param arrayPuntosEnY array de los puntos en Y
-     * @param ColorFigura  color que se ha seleccionado
+     * @param ColorFigura color que se ha seleccionado
      */
     private void pintarFigura(int[] arrayPuntosEnX, int[] arrayPuntosEnY, String ColorFigura) {
         Graphics ventana = getGraphics();
@@ -263,7 +295,7 @@ public class Ventana extends javax.swing.JFrame {
             ventana.setColor(Color.CYAN);
         } else {
             ventana.setColor(Color.RED);
-        } 
+        }
 
         switch (figura) {
             case "Cuadrado":
@@ -313,6 +345,7 @@ public class Ventana extends javax.swing.JFrame {
         taResultados = new javax.swing.JTextArea();
         btGraficar = new javax.swing.JButton();
         btLimpiar = new javax.swing.JButton();
+        btAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -323,7 +356,7 @@ public class Ventana extends javax.swing.JFrame {
         lbSeleccionFigura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbSeleccionFigura.setText("Seleccione una figura");
 
-        cbSeleccionFigura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cuadrado", "Rectangulo", "Triangulo", " " }));
+        cbSeleccionFigura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una Figura", "Cuadrado", "Rectangulo", "Triangulo", " " }));
         cbSeleccionFigura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSeleccionFiguraActionPerformed(evt);
@@ -333,7 +366,7 @@ public class Ventana extends javax.swing.JFrame {
         lbSeleccionColor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbSeleccionColor.setText("Seleccione un color ");
 
-        cbSeleccionColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo ", "Verde", "Azul ", "Cyan" }));
+        cbSeleccionColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Verde", "Azul", "Cyan" }));
 
         lbCoordenadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbCoordenadas.setText("Ingrese las coordenadas");
@@ -371,7 +404,7 @@ public class Ventana extends javax.swing.JFrame {
             panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -386,6 +419,13 @@ public class Ventana extends javax.swing.JFrame {
         btLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimpiarActionPerformed(evt);
+            }
+        });
+
+        btAgregar.setText("Agregar");
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarActionPerformed(evt);
             }
         });
 
@@ -416,9 +456,12 @@ public class Ventana extends javax.swing.JFrame {
                                         .addComponent(lbNumero1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(tfCoordenada1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btAgregar))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lbNumero2)
@@ -447,7 +490,9 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(lbSeleccionFigura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAgregar))
                 .addGap(18, 18, 18)
                 .addComponent(lbSeleccionColor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -484,15 +529,33 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     /**
-     * Metodo para seleccionar el tipo de figura y cambiar la visibilidad del panel al graficar
-     * @param evt 
+     * Metodo para seleccionar el tipo de figura y cambiar la visibilidad del
+     * panel al graficar
+     *
+     * @param evt
      */
     private void cbSeleccionFiguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSeleccionFiguraActionPerformed
         // TODO add your handling code here:
         String figura2 = cbSeleccionFigura.getSelectedItem().toString();
         switch (figura2) {
+            case "Seleccione una Figura":
+                lbCoordenadas.setVisible(false);
+                lbNumero1.setVisible(false);
+                lbNumero2.setVisible(false);
+                lbNumero3.setVisible(false);
+                lbNumero4.setVisible(false);
+                tfCoordenada1.setVisible(false);
+                tfCoordenada2.setVisible(false);
+                tfCoordenada3.setVisible(false);
+                tfCoordenada4.setVisible(false);
+                taResultados.setVisible(false);
+                panelInformacionFiguras.setVisible(false);
+                btGraficar.setVisible(false);
+                btLimpiar.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Por favor seleccione una figura", "Error!", JOptionPane.WARNING_MESSAGE);
+                break;
             case "Cuadrado":
                 lbCoordenadas.setVisible(true);
                 lbNumero1.setVisible(true);
@@ -562,10 +625,11 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCoordenada1ActionPerformed
     /**
      * Metodo que limpia la ventana
-     * @param evt 
+     *
+     * @param evt
      */
     private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
-        Graphics ventana=getGraphics();
+        Graphics ventana = getGraphics();
         super.paint(ventana);
         ventana.drawLine(450, 80, 450, 500);
         ventana.drawLine(250, 290, 650, 290);
@@ -576,6 +640,45 @@ public class Ventana extends javax.swing.JFrame {
             ventana.drawLine(445, i, 455, i);
         }
     }//GEN-LAST:event_btLimpiarActionPerformed
+
+    /**
+     * Metodo que llena el vector segun la 
+     * cantidad de clic que se hagan por el evento
+     * @param evt 
+     */
+    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+        String figura2 = cbSeleccionFigura.getSelectedItem().toString();
+        seperarCoordenadas();
+        if (numeroFiguraAgregadas < tamanoVectorFiguras) {
+            switch (figura2) {
+            case "Seleccione una Figura":
+                JOptionPane.showMessageDialog(this, "Por favor seleccione una figura", "Error!", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "Cuadrado":
+                operacion = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                ((Cuadrado) operacion).setColor(color);
+                vectorDeFiguras[numeroFiguraAgregadas] = ((Cuadrado) operacion);
+                numeroFiguraAgregadas++;
+                break;
+            case "Rectangulo":
+                operacion = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                ((Rectangulo) operacion).setColor(color);
+                vectorDeFiguras[numeroFiguraAgregadas] = ((Rectangulo) operacion);    
+                numeroFiguraAgregadas++;
+                break;
+            case "Triangulo":
+                operacion = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                ((Triangulo) operacion).setColor(color);
+                vectorDeFiguras[numeroFiguraAgregadas] = ((Triangulo) operacion); 
+                numeroFiguraAgregadas++;
+                break;
+            default:
+                break;
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "No puede agregar mas figuras", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -604,9 +707,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-       /**
-        * Metodo que crea y muestra el formulario
-        */
+        /**
+         * Metodo que crea y muestra el formulario
+         */
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -616,6 +719,7 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAgregar;
     private javax.swing.JButton btGraficar;
     private javax.swing.JButton btLimpiar;
     private javax.swing.JComboBox cbSeleccionColor;

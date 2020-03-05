@@ -29,11 +29,14 @@ public class Triangulo extends FigurasGeometricas {
      */
     public Triangulo(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y) {
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+        setLado1(hallarLado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y));
+        setLado2(hallarLado(coordenada3X,coordenada3Y,coordenada2X,coordenada2Y));
+        this.lado3=hallarLado(coordenada1X,coordenada1Y,coordenada3X,coordenada3Y);
     }
     /**
      * Metodo para hallar la distancia de cada uno de los lados del triangulo
-     */
-
+     * 
+     * Metodo hallar lado de ejercicio anterior 
    @Override
     public void hallarLado() {
         double raiz, raiz2;
@@ -57,6 +60,9 @@ public class Triangulo extends FigurasGeometricas {
 
         this.lado3 = raiz;
     }
+    * 
+    *  */
+    
     /**
      * Metodo para identificar que tipo de triangulo es 
      */

@@ -51,9 +51,13 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="tfCoordenada1" min="-2" pref="102" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="cbSeleccionFigura" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbSeleccionFigura" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="cbSeleccionFigura" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lbSeleccionFigura" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btAgregar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -95,7 +99,10 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="lbSeleccionFigura" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cbSeleccionFigura" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbSeleccionFigura" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lbSeleccionColor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -163,11 +170,12 @@
     <Component class="javax.swing.JComboBox" name="cbSeleccionFigura">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Cuadrado"/>
-            <StringItem index="1" value="Rectangulo"/>
-            <StringItem index="2" value="Triangulo"/>
-            <StringItem index="3" value=" "/>
+          <StringArray count="5">
+            <StringItem index="0" value="Seleccione una Figura"/>
+            <StringItem index="1" value="Cuadrado"/>
+            <StringItem index="2" value="Rectangulo"/>
+            <StringItem index="3" value="Triangulo"/>
+            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -187,9 +195,9 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Rojo "/>
+            <StringItem index="0" value="Rojo"/>
             <StringItem index="1" value="Verde"/>
-            <StringItem index="2" value="Azul "/>
+            <StringItem index="2" value="Azul"/>
             <StringItem index="3" value="Cyan"/>
           </StringArray>
         </Property>
@@ -255,7 +263,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="171" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="168" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -293,6 +301,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimpiarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btAgregar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAgregarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

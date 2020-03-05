@@ -23,6 +23,7 @@ public class Rectangulo extends Cuadrilatero {
      */
     public Rectangulo(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y, double coordenada4X, double coordenada4Y) {
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+        
     }
     /**
      * Metodo para hallar el perimetro del rectangulo
