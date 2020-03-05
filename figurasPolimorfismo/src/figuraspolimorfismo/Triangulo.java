@@ -158,13 +158,9 @@ public class Triangulo extends FigurasGeometricas {
      */
     @Override
     public int[] arrayPuntosEnX() {
-       //int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
-        int coordenadaX1 = (int) getCoordenada1X();
-        int coordenadaX2 = (int) getCoordenada2X();
-        int coordenadaX3 = (int) getCoordenada3X();
-        coordenadaX1=450+(coordenadaX1*10);
-        coordenadaX2=450+(coordenadaX2*10);
-        coordenadaX3=450+(coordenadaX3*10);
+        int coordenadaX1 = nuevosPuntosenX(getCoordenada1X());
+        int coordenadaX2 = nuevosPuntosenX(getCoordenada2X());
+        int coordenadaX3 = nuevosPuntosenX(getCoordenada3X());
         int puntosEnX[] = {coordenadaX1, coordenadaX2, coordenadaX3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
@@ -177,12 +173,9 @@ public class Triangulo extends FigurasGeometricas {
     @Override
     public int[] arrayPuntosEnY() {
 
-        int coordenadaY1 = (int) getCoordenada1Y();
-        int coordenadaY2 = (int) getCoordenada2Y();
-        int coordenadaY3 = (int) getCoordenada3Y();
-        coordenadaY1=290-(coordenadaY1*10);
-        coordenadaY2=290-(coordenadaY2*10);
-        coordenadaY3=290-(coordenadaY3*10);
+        int coordenadaY1 = nuevosPuntosenY(getCoordenada1Y());
+        int coordenadaY2 = nuevosPuntosenY(getCoordenada2Y());
+        int coordenadaY3 = nuevosPuntosenY(getCoordenada3Y());
         int puntosEnY[] = {coordenadaY1, coordenadaY2, coordenadaY3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnY;

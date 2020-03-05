@@ -130,6 +130,25 @@ public abstract class FigurasGeometricas implements IOperaciones {
         return lado;
     }
     
+    public int nuevosPuntosenX(double coordenada){
+        int valorCoordenada;
+        
+        int coordenadaX = (int) coordenada;
+        valorCoordenada= 450 + (coordenadaX * 10);
+
+        return valorCoordenada;
+       
+    }
+    
+    public int nuevosPuntosenY(double coordenada){
+        int valorCoordenada;
+        
+        int coordenadaY = (int) coordenada;
+        valorCoordenada = 290 - (coordenadaY * 10);
+
+        return valorCoordenada;
+       
+    }
     
     /**
      * Metodo que recibe las coordenadas en pares , para validar si se puede
