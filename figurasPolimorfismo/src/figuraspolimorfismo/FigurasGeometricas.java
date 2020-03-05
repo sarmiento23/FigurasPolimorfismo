@@ -44,26 +44,12 @@ public abstract class FigurasGeometricas implements IOperaciones {
      */
     private double coordenada3X, coordenada3Y;
     /**
-     * la variable coordenada1 almacena el valor de la primera coordenda
-     */
-    private String coordenada1;
-
-    /**
-     * la variable coordenada2 almacena el valor de la segunda coordenda
-     */
-    private String coordenada2;
-    /**
-     * la variable coordenada3 almacena el valor de la tercera coordenda
-     */
-    private String coordenada3;
-    /**
      * la variable color almacena el color seleccionado
      */
     private String color;
 
     /*Quitar decimales alas variables doubles
-    /DecimalFormat decimales = new DecimalFormat("#.0");*/
-
+     /DecimalFormat decimales = new DecimalFormat("#.0");*/
     /**
      * Constructor que recibe los valores de las tres coordendas en X y Y
      *
@@ -84,72 +70,81 @@ public abstract class FigurasGeometricas implements IOperaciones {
 
 //        hallarLado();
     }
-    
+
     /**
-     * Metodo hallaLado() del ejercicio anterior 
+     * Metodo hallaLado() del ejercicio anterior
      */
 
     /* public void hallarLado() {
-        double raiz, raiz2;
-        double potencia1, potencia2;
+     double raiz, raiz2;
+     double potencia1, potencia2;
 
-        potencia1 = Math.pow((this.coordenada2X - this.coordenada1X), 2);
-        potencia2 = Math.pow((this.coordenada2Y - this.coordenada1Y), 2);
-        raiz = Math.sqrt(potencia1 + potencia2);
+     potencia1 = Math.pow((this.coordenada2X - this.coordenada1X), 2);
+     potencia2 = Math.pow((this.coordenada2Y - this.coordenada1Y), 2);
+     raiz = Math.sqrt(potencia1 + potencia2);
 
-        this.lado1 = raiz;
+     this.lado1 = raiz;
 
-        potencia1 = Math.pow((this.coordenada3X - this.coordenada2X), 2);
-        potencia2 = Math.pow((this.coordenada3Y - this.coordenada2Y), 2);
-        raiz = Math.sqrt(potencia1 + potencia2);
+     potencia1 = Math.pow((this.coordenada3X - this.coordenada2X), 2);
+     potencia2 = Math.pow((this.coordenada3Y - this.coordenada2Y), 2);
+     raiz = Math.sqrt(potencia1 + potencia2);
 
-        this.lado2 = raiz;
-    }*/
-    
+     this.lado2 = raiz;
+     }*/
     /**
-     * Metodo que recibe argumentos referentes a dos coordenadas 
-     * para encontrar la medida de un punto a otro retornando 
-     * la medida del lado
-     * 
+     * Metodo que recibe argumentos referentes a dos coordenadas para encontrar
+     * la medida de un punto a otro retornando la medida del lado
+     *
      * @param coordenada1X
      * @param coordenada1Y
      * @param coordenada2X
      * @param coordenada2Y
-     * @return 
+     * @return
      */
-   
-    public double hallarLado(double coordenada1X , double coordenada1Y , double coordenada2X , double coordenada2Y) {
-        double raiz, potencia1, potencia2,lado;
-        
+    public double hallarLado(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y) {
+        double raiz, potencia1, potencia2, lado;
+
         potencia1 = Math.pow((coordenada2X - coordenada1X), 2);
         potencia2 = Math.pow((coordenada2Y - coordenada1Y), 2);
         raiz = Math.sqrt(potencia1 + potencia2);
-        
+
         lado = raiz;
-        
+
         return lado;
     }
-    
-    public int nuevosPuntosenX(double coordenada){
+
+    /**
+     * Metodo que calcula los puntos de X en cada una de las coordenadas
+     *
+     * @param coordenada valor del punto en X
+     * @return valorCoordenada valor del punto X de cada una de las coordenadas
+     */
+    public int nuevosPuntosenX(double coordenada) {
         int valorCoordenada;
-        
+
         int coordenadaX = (int) coordenada;
-        valorCoordenada= 450 + (coordenadaX * 10);
+        valorCoordenada = 450 + (coordenadaX * 10);
 
         return valorCoordenada;
-       
+
     }
-    
-    public int nuevosPuntosenY(double coordenada){
+
+    /**
+     * Metodo que calcula los puntos de X en cada una de las coordenadas
+     *
+     * @param coordenada valor del punto en X
+     * @return valorCoordenada valor del punto X de cada una de las coordenadas
+     */
+    public int nuevosPuntosenY(double coordenada) {
         int valorCoordenada;
-        
+
         int coordenadaY = (int) coordenada;
         valorCoordenada = 290 - (coordenadaY * 10);
 
         return valorCoordenada;
-       
+
     }
-    
+
     /**
      * Metodo que recibe las coordenadas en pares , para validar si se puede
      * dibujar un triangulo
@@ -165,6 +160,12 @@ public abstract class FigurasGeometricas implements IOperaciones {
         return verificar;
     }
 
+    /**
+     * Metodo que muestra el mensaje con los resultados del area y parametro de
+     * las figuras
+     *
+     * @return resultado string del mensaje
+     */
     public String resultadoOperaciones() {
         String resultado = "El area es: " + area + "\n" + "El perimetro es: " + perimetro;
         return resultado;
@@ -247,7 +248,6 @@ public abstract class FigurasGeometricas implements IOperaciones {
      *
      * @return coordenada1X retorna el valor de X de la primera coordenda
      */
-
     public double getCoordenada1X() {
         return coordenada1X;
     }
@@ -338,7 +338,6 @@ public abstract class FigurasGeometricas implements IOperaciones {
      *
      * @return coordenada3Y retorna el valor de Y de la tercera coordenda
      */
-
     public double getCoordenada3Y() {
         return coordenada3Y;
     }
@@ -348,64 +347,8 @@ public abstract class FigurasGeometricas implements IOperaciones {
      *
      * @param coordenada3Y valor a modificar en Y de la tercera coordenda
      */
-
     public void setCoordenada3Y(double coordenada3Y) {
         this.coordenada3Y = coordenada3Y;
-    }
-
-    /**
-     * Metodo para mostrar el valor de la primera coordenada
-     *
-     * @return coordenada1 retorna el valor de la primera coordenada
-     */
-    public String getCoordenada1() {
-        return coordenada1;
-    }
-
-    /**
-     * Metodo para modificar el valor de la primera coordenda
-     *
-     * @param coordenada1 valor a modificar en la primera coordenda
-     */
-
-    public void setCoordenada1(String coordenada1) {
-        this.coordenada1 = coordenada1;
-    }
-
-    /**
-     * Metodo para mostrar el valor de la segunda coordenda
-     *
-     * @return coordenada2 retorna el valor de la segunda coordenda
-     */
-    public String getCoordenada2() {
-        return coordenada2;
-    }
-
-    /**
-     * Metodo para modificar el valor de la segunda coordenda
-     *
-     * @param coordenada2 valor a modificar en la segunda coordenda
-     */
-    public void setCoordenada2(String coordenada2) {
-        this.coordenada2 = coordenada2;
-    }
-
-    /**
-     * Metodo para mostrar el valor de la tercera coordenda
-     *
-     * @return coordenda3 retorna el valor de la tercera coordenda
-     */
-    public String getCoordenada3() {
-        return coordenada3;
-    }
-
-    /**
-     * Metodo para modificar el valor de la tercera coordenda
-     *
-     * @param coordenada3 valor a modificar en la tercera coordenda
-     */
-    public void setCoordenada3(String coordenada3) {
-        this.coordenada3 = coordenada3;
     }
 
     /**

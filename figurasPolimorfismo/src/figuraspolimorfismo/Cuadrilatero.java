@@ -6,22 +6,24 @@
 package figuraspolimorfismo;
 
 /**
- * 
+ *
  * @author Luz
  */
 public class Cuadrilatero extends FigurasGeometricas {
 
-
     /**
-     * las variables coordenada4X y coordenada4Y almacenan los valores de  X y Y de la cuarta coordenada
+     * las variables coordenada4X y coordenada4Y almacenan los valores de X y Y
+     * de la cuarta coordenada
      */
-    private double coordenada4X,coordenada4Y;
+    private double coordenada4X, coordenada4Y;
     /**
-     *  la variable coordenada4 almacena el valor de la cuarta coordenda
+     * la variable coordenada4 almacena el valor de la cuarta coordenda
      */
     private String coordenada4;
+
     /**
-     * Constructor que recibe los valores de las cuatro coordendas en X y Y 
+     * Constructor que recibe los valores de las cuatro coordendas en X y Y
+     *
      * @param coordenada1X valor de X de la primera coordenda
      * @param coordenada1Y valor de Y de la primera coordenda
      * @param coordenada2X valor de X de la segunda coordenda
@@ -31,20 +33,23 @@ public class Cuadrilatero extends FigurasGeometricas {
      * @param coordenada4X valor de X de la cuarta coordenda
      * @param coordenada4Y valor de Y de la cuarta coordenda
      */
-    public Cuadrilatero(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y,double coordenada4X, double coordenada4Y ) {
+    public Cuadrilatero(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y, double coordenada4X, double coordenada4Y) {
 
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
         this.coordenada4X = coordenada4X;
         this.coordenada4Y = coordenada4Y;
-        
-        setLado1(hallarLado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y));
-        setLado2(hallarLado(coordenada3X,coordenada3Y,coordenada2X,coordenada2Y));
+
+        setLado1(hallarLado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y));
+        setLado2(hallarLado(coordenada3X, coordenada3Y, coordenada2X, coordenada2Y));
     }
-     /**
-      * Metodo para verificar si la figura es un cuadrado ó un rectangulo
-      * @param tipoCuadrado identificar que tipo de figura es 
-      * @return verificar retorna un false si ninguna de las condiciones se cumple
-      */
+
+    /**
+     * Metodo para verificar si la figura es un cuadrado ó un rectangulo
+     *
+     * @param tipoCuadrado identificar que tipo de figura es
+     * @return verificar retorna un false si ninguna de las condiciones se
+     * cumple
+     */
     public boolean verificarCuadrilatero(String tipoCuadrado) {
 //        boolean verificarCoord=verificarCoordenadas();
         boolean verificar = false;
@@ -67,12 +72,11 @@ public class Cuadrilatero extends FigurasGeometricas {
         }
     }
 
-    
     /**
-     * Metodo para verificar  que no se dibuje un rombo ó un romboide
+     * Metodo para verificar que no se dibuje un rombo ó un romboide
+     *
      * @return verificar devuelve un true si la condicion se cumple
      */
-
     @Override
     public boolean verificarCoordenadas() {
         boolean verificar = false;
@@ -81,9 +85,11 @@ public class Cuadrilatero extends FigurasGeometricas {
         }
         return verificar;
     }
+
     /**
-     * Metodo que calcula  las cuatro cordenadas en X para graficar 
-     * @return  puntosEnX retorna un array 
+     * Metodo que calcula las cuatro cordenadas en X para graficar
+     *
+     * @return puntosEnX retorna un array
      */
     @Override
     public int[] arrayPuntosEnX() {
@@ -96,13 +102,15 @@ public class Cuadrilatero extends FigurasGeometricas {
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
     }
-     /**
-     * Metodo que calcula  las cuatro cordenadas en Y para graficar 
-     * @return  puntosEnY retorna un array 
+
+    /**
+     * Metodo que calcula las cuatro cordenadas en Y para graficar
+     *
+     * @return puntosEnY retorna un array
      */
     @Override
     public int[] arrayPuntosEnY() {
-        
+
         int coordenadaY1 = nuevosPuntosenY(getCoordenada1Y());
         int coordenadaY2 = nuevosPuntosenY(getCoordenada2Y());
         int coordenadaY3 = nuevosPuntosenY(getCoordenada3Y());
@@ -112,43 +120,55 @@ public class Cuadrilatero extends FigurasGeometricas {
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnY;
     }
-     /**
-       * Metodo para mostrar el valor de X  de la cuarta coordenda
-       * @return coordenada3X retorna el valor de X de la cuarta coordenda
-      */
+
+    /**
+     * Metodo para mostrar el valor de X de la cuarta coordenda
+     *
+     * @return coordenada3X retorna el valor de X de la cuarta coordenda
+     */
     public double getCoordenada4X() {
         return coordenada4X;
     }
+
     /**
-     * Metodo para modificar el valor de X de la cuarta coordenda  
-     * @param coordenada4X valor a modificar en X  de la cuarta coordenda
+     * Metodo para modificar el valor de X de la cuarta coordenda
+     *
+     * @param coordenada4X valor a modificar en X de la cuarta coordenda
      */
     public void setCoordenada4X(short coordenada4X) {
         this.coordenada4X = coordenada4X;
     }
+
     /**
-     * Metodo para mostrar el valor de Y  de la cuarta coordenda
+     * Metodo para mostrar el valor de Y de la cuarta coordenda
+     *
      * @return retorna el valor de Y de la cuarta coordenda
      */
     public double getCoordenada4Y() {
         return coordenada4Y;
     }
+
     /**
-     * Metodo para modificar el valor de Y de la cuarta coordenda  
-     * @param coordenada4Y valor a modificar en Y  de la cuarta coordenda
+     * Metodo para modificar el valor de Y de la cuarta coordenda
+     *
+     * @param coordenada4Y valor a modificar en Y de la cuarta coordenda
      */
     public void setCoordenada4Y(short coordenada4Y) {
         this.coordenada4Y = coordenada4Y;
     }
-     /**
+
+    /**
      * Metodo para mostrar el valor de la cuarta coordenada
+     *
      * @return coordenada1 retorna el valor de la cuarta coordenada
      */
     public String getCoordenada4() {
         return coordenada4;
     }
+
     /**
      * Metodo para modificar el valor de la cuarta coordenda
+     *
      * @param coordenada4 valor a modificar en la cuarta coordenda
      */
 
@@ -156,10 +176,10 @@ public class Cuadrilatero extends FigurasGeometricas {
         this.coordenada4 = coordenada4;
     }
 
-   @Override
-     public void hallarArea() {
-       double resultadoArea =getLado1() * getLado1();
-       setArea(resultadoArea);
+    @Override
+    public void hallarArea() {
+        double resultadoArea = getLado1() * getLado1();
+        setArea(resultadoArea);
     }
 
     /**
@@ -169,12 +189,5 @@ public class Cuadrilatero extends FigurasGeometricas {
     public void hallarPerimetro() {
         setPerimetro(getLado1() * 4);
     }
-
-      /**
-     * Metodo para hallar la distancia de cada uno de los lados
-     */
-    
-    
-    
 
 }

@@ -647,6 +647,7 @@ public class Ventana extends javax.swing.JFrame {
         tfCoordenada2.setText(null);
         tfCoordenada3.setText(null);
         tfCoordenada4.setText(null);
+        taResultados.setText(null);
         panelInformacionFiguras.setVisible(false);
         btGraficar.setVisible(false);
         btLimpiar.setVisible(false);
